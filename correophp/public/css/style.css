@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #3a7999;
+    font-family: "Josefin Sans",sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+.shadow
+{
+    box-shadow: 0px 0px 12px 0px black;
+}
+
+#wrapper {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100% !important;
+}
+#button 
+{
+    font-weight: bold;
+    margin: 5px;
+    float: right; 
+}
+.link
+{
+    font-weight: bold;
+    margin-top: 13px;
+    float: right;
+}
+section {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 800px;
+    margin: 0 auto;
+    max-width: 1440px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100% !important;
+}
+#bloque1 {
+    background-image: url("{{asset('/img/banner3-fondo.png')}}");
+}
+#bloque2 {
+    background-image: url("img/correomenu.png");
+}
+#bloque3 {
+    background-image: url("img/redactar.png");
+}
+#bloque4 {
+    background-image: url("img/registro.png");
+}
+h1 {
+    background-color: #02223a;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    font-size: 5em;
+    font-weight: bold;
+    margin-top: 3em;
+    opacity: 0.76;
+    text-align: center;
+    text-shadow: 1px 1px 1px #666;
+    text-transform: uppercase;
+    width: 100%;
+}
+h2 {
+    float: left;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 25em;
+    margin-left: 5em;
+    opacity: 0.85;
+    text-align: center;
+    text-shadow: 1px 1px 1px #ccc;
+    text-transform: uppercase;
+}
+h3 {
+   background-color: #02223a;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1em;
+    opacity: 0.76;
+    text-align: center;
+    text-shadow: 1px 1px 1px #666;
+    text-transform: uppercase;
+    width: 100%;
+}
+#logo {
+    display: block;
+    margin: 6em auto 0;
+    opacity: 0.8;
+    width: 200px;
+}
+#bloque2 p {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 1.2em;
+    font-weight: normal;
+    margin: 7em auto;
+    max-width: 800px;
+    padding: 1.5em;
+}

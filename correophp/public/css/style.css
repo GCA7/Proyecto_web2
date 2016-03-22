@@ -46,7 +46,7 @@ section {
     width: 100% !important;
 }
 #bloque1 {
-    background-image: url("{{asset('/img/banner3-fondo.png')}}");
+    background-image: url("img/banner3-fondo.png");
 }
 #bloque2 {
     background-image: url("img/correomenu.png");

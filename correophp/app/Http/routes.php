@@ -20,8 +20,26 @@ Route::get('login', function () {
 });
 
 Route::get('register', function () {
-    return view('register');
+   return view('register');
 });
+
+Route::get('correoprincipal', function () {
+   return view('correoprincipal');
+});
+
+Route::get('loguear', function () {
+   return view('loguear');
+});
+
+Route::post('registro', 'UsersController@insertar');
+
+Route::post('loguear', 'UsersController@validarlogin');
+
+#Route::post('mail','MailController@email');
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -33,6 +51,5 @@ Route::get('register', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
     //
-});
+

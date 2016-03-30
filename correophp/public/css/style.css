@@ -10,6 +10,7 @@ body {
 a{
     text-decoration: none;
 }
+
 .shadow
 {
     box-shadow: 0px 0px 12px 0px black;
@@ -46,16 +47,16 @@ section {
     width: 100% !important;
 }
 #bloque1 {
-    background-image: url("img/banner3-fondo.png");
+    background-image: url("../img/banner3-fondo.png");
 }
 #bloque2 {
-    background-image: url("img/correomenu.png");
+    background-image: url("../img/correomenu.png");
 }
 #bloque3 {
-    background-image: url("img/redactar.png");
+    background-image: url("../img/redactar.png");
 }
 #bloque4 {
-    background-image: url("img/registro.png");
+    background-image: url("../img/registro.png");
 }
 h1 {
     background-color: #02223a;
@@ -111,4 +112,461 @@ h3 {
     margin: 7em auto;
     max-width: 800px;
     padding: 1.5em;
+}
+
+
+
+
+
+
+.letras{
+    font-size: 50px;
+    font-family: arial;
+}
+.izquierda{
+    margin-left: 0px;
+    padding-top: -400px;
+}
+.derecha{
+    text-align: center;
+    padding-bottom: 80px;
+    border: solid gray;
+    background-color: gray;
+}
+.pr{
+    border: solid lightgray;
+}
+.tamano {
+    margin-right: 0%;
+    width: 100%;
+}
+button {
+ border: none;
+ background: #3a7999;
+ color: #f2f2f2;
+ padding: 2%;
+ font-size: 108%;
+ border-radius: 10%;
+ position: relative;
+ box-sizing: border-box;
+ transition: all 500ms ease;
+}
+
+button:before {
+ content:'';
+ position: absolute;
+ top: 0px;
+ left: 0px;
+ width: 0px;
+ height: 42%;
+ background: rgba(255,255,255,0.3);
+ border-radius: 5%;
+ transition: all 2s ease;
+} 
+
+button:active{
+    transform:scale(0.80);
+}
+
+button:hover {
+ background: rgba(0,0,0,0);
+ color: white;
+ box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+button.b2{
+    padding: 5px;
+    }
+
+button.b3{
+    padding: 4px;
+    float: right;
+    margin-top: 11px;
+    margin-right: 6px;
+}
+.sombra {
+  box-shadow: 1px 2px 2px 1px black;
+}
+.sombreado{
+    box-shadow: 15px 5px 81px 1px black;
+}
+.cabecera{
+    padding: 0;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+}
+.ocultar{
+    display: none;
+}
+.centrar {
+    padding: none;
+}
+.espacio {
+    padding: 10px;
+}
+.col{
+    background-color: #106A7F;
+}
+.col2{
+    background-color: lightgray;
+    width: 100%;
+}
+.letra{
+    padding-top: 50px;
+    font-family: arial;
+    font-size: 20px;
+    color: white;
+}
+.tanimg{
+    float: none;
+    max-width: 47%;
+    margin: 40px;
+}
+.tanimg2{
+    float: none;
+    max-width: 47%;
+    margin: 40px
+}
+.colfondo{
+    background-color: #040F1C;
+    margin-bottom: -20px;
+}
+.parrafo {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 10px;
+}
+.logo{
+    max-width: 15%;
+    margin-right: 20px;
+}
+body.cuerpo{
+    background-color: gray;
+}
+.color{
+    float: none;
+    background-color: #012B44;
+    height: 53px;
+    padding-top: 3px;
+    max-width: 100%;
+    padding-bottom: none;
+}
+img{max-width: 100%;}
+
+.verticalLine {
+   margin-left: 100px;
+   border-right: 1px solid gray;
+}
+.im{
+    float: left;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+.dere2{
+    float: right;
+    margin-right: 2px;
+}
+.der2{
+    font-size: 1.5em;
+    margin-top: 10px;
+    float: right;
+    margin-right: 2px;
+}
+.pe{
+margin-top: 11px;
+color: white;
+font-size: 1em;
+float: left;
+margin-left: 15px;
+}
+.containertan{
+    width: 100%;
+}
+.nav{
+    margin-top: 5px;
+    margin-right: 1150px;
+    padding-top: 5px;
+    padding-bottom: 335px;
+    background-color: gray;
+    padding-left: 15px;
+}
+.a{
+    text-decoration: none;
+    font-size: 1em;
+    color: lightgray;
+}
+.imagenConPieDeTexto:hover {
+      background-color: #4C565E;
+   }
+.seleccionado{
+    background-color: #4C565E;
+}
+.left{
+    margin-left: 3px;
+}
+.iz{
+    float: left;
+    margin-left: -520px;
+    max-width: 40%;
+    margin-top: 30%;
+    margin-bottom: -32REiz%;
+}
+.floatright {
+    margin-top: -535px;
+    float: center;
+    padding-top: 10px;
+    padding-bottom: 60px;
+    margin-right: 70px;
+    margin-left: 270px;
+    padding-bottom: 350px;
+}
+.img-tam{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.img-tam2{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.hoy{
+    text-align: left;
+    font-size: 12px;
+}
+.salto {
+    padding-top: 11px;
+   padding-bottom: 1px;
+}
+.dere{
+    float: right;
+    margin-top: -22px;
+    margin-right: 100px;
+
+}
+
+.mostrar:hover{
+    display: block;
+}
+
+.text{
+    padding-top: 25px;
+    font-size: 1em;
+    text-align: left;
+    padding-bottom: 5px;
+}
+.ocultar{
+    display: none;
+}
+.colocar{
+    margin-top: 33px;
+}
+.colornuevo{
+    margin-top: 3%;
+    margin-left: 1%;
+    width: 98%;
+    height: 98%;
+    background-color: #707271;
+}
+.sombra2{
+    box-shadow: 2px 2.5px 15px 1px #383838;
+}
+.he{
+    height: 50px;
+    background-color: transparent;
+    padding-top: 10px;
+}
+.txt.izq{
+    font-size: 1em;
+    text-align: left;
+    margin-left: 3px;
+}
+.padding{
+    float:right;
+    padding-right: 14px;
+}
+.txt-izq {
+    text-align: right;
+    margin-left: 4%;
+    padding-left: 0px;
+    color:white;
+}
+.contenido{
+    text-align: center;
+    font-size: 1.5em;
+
+}
+.bandeja{
+    margin-top: -450px;
+    margin-right: 220px;
+    float: right;
+    font-size: 15px;
+    text-align: center;
+}
+.div{
+    background-color: #7D7D7D;
+    margin: 5%;
+}
+.ta{
+    border: none;
+    margin-bottom: 1px;
+    width: 80%;
+    margin-left: 60px;
+}
+.color{
+    float: none;
+    background-color: #012B44;
+    height: 53px;
+    padding-top: 3px;
+    max-width: 100%;
+    padding-bottom: none;
+}
+.bt{
+    margin-left: 27%;
+    width: 10%;
+    height: 24%;
+    border-radius: 200px 200px 200px 200px;
+-moz-border-radius: 200px 200px 200px 200px;
+-webkit-border-radius: 200px 200px 200px 200px;
+border: 0px solid #000000;
+}
+.bt:hover{
+    background-color: lightblue;
+}
+.bt.colo{
+    background-color: red;
+}
+.sp:hover{
+    background-color: pink;
+}
+.letralogin{
+    font-size: 45%;
+}
+section {
+    float: none;
+}
+h1{
+    color: white;
+}
+p {
+    color: white;
+    float: none;
+    font-size: 130%;
+}
+header .h{
+    padding-top: none;
+}
+.header{
+    margin-top: 1px;
+    background-color: #012B44;
+    height: 35px;
+    text-align: left;
+    margin-top: -20px;
+}
+body {
+    background-color: #012B44;
+    font-family: arial;
+    margin:0 auto;
+    text-align:center;
+}
+li {
+    margin-left: -50px;
+   padding: 15px;
+
+}
+span.espacio{
+    padding-left: 110px;
+    color: black;
+}
+input {
+    height: 23px;
+}
+input.top{
+    padding-top: 15px;
+}
+input.color{
+    height: 20px;
+    background-color: lightgray;
+}
+footer.posicion{
+    margin-top: 70px;
+}
+footer {
+    background-color: black;
+}
+.nave{
+    padding-top: 1%;
+    margin: 1px;
+    text-align: left;
+    background-color: lightgray;
+    float: center;
+    height: auto;
+    width: 90%;
+    padding-bottom: 7px;
+}
+
+.arr{
+    margin-top: 80px;
+}
+
+@media only screen and (max-width: 768px) {
+         .nav{
+            margin-left: 30%;
+            margin-top: 4px;
+            padding-top: 3px;
+            padding-bottom: 535px;
+            background-color: gray;
+            padding-left: 5px;
+
+         }
+         .nave{
+            margin-left: -200px;
+            padding-top: 1%;
+            margin: 1px;
+            text-align: left;
+            background-color: lightgray;
+            float: left;
+            height: auto;
+            width: 90%;
+            padding-bottom: 7px;
+
+         }
+
+         .a{
+            height: 45%;
+            margin-left: 2px;
+         }
+         button.b2{
+            float: center;
+            margin-left: 44px;
+    }
+    .imagenConPieDeTexto{
+        padding-right: 70px;
+    }
+
+        }
+@media only screen and (max-width: 627px) {
+        .nav{
+            margin-left: 10px;
+            margin-top: 4px;
+            padding-top: 3px;
+            padding-bottom: 535px;
+            background-color: gray;
+            padding-left: -50px;
+        }
+
+        .nave{
+            margin-left: -200px;
+            margin-top: 1%;
+            padding-top: 2px;
+            text-align: left;
+            background-color: lightgray;
+            float: left;
+            height: auto;
+            width: 90%;
+            padding-bottom: 10px;
+            padding-left: 30px;
+
+         }
+
 }

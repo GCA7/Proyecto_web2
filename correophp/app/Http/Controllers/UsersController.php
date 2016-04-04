@@ -68,19 +68,17 @@ public function validarlogin(Request $request)
 {
     $email = $request->input('log_email');
     $password = $request->input('log_pass');
-    $results = DB::table('users')->get();
-    foreach ($results as $value) {
-        echo $passdecrypt = Crypt::decrypt($value->password);
+    #$results = DB::table('users')->get();
+    $user= DB::table('users')->select('password')->where('email',$email)->where('estado','false')->get();
+    foreach ($user as $value) {
+        $passdecrypt= Crypt::decrypt($value->password);
         if($value->email == $email && $passdecrypt == $password){
             echo "si logueo";
             return view('correoprincipal');
         }else{
             echo "no logueo";
         }
-
     }
-
-
 }
  
 }

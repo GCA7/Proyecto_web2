@@ -31,6 +31,10 @@ Route::get('loguear', function () {
    return view('loguear');
 });
 
+Route::get('confirmacion', function () {
+   return view('confirmacion');
+});
+
 Route::post('registro', 'UsersController@insertar');
 
 Route::post('loguear', 'UsersController@validarlogin');
@@ -53,3 +57,9 @@ Route::post('loguear', 'UsersController@validarlogin');
 
     //
 
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});

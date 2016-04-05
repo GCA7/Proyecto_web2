@@ -5,7 +5,8 @@
 @section('content')
 
 	<section class="centrar container espacio col">
-			<form name="form_login" method="POST" action="{{asset('loguear')}}">
+			<form name="form_login" method="POST" action="{{asset('loguear')}}" >
+			{{Csrf_field ()}}
 				<div class="container animated zoomIn">
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-md-offset-4">

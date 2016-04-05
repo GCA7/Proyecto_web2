@@ -68,9 +68,9 @@ public function validarlogin(Request $request)
 {
     $email = $request->input('log_email');
     $password = $request->input('log_pass');
-    #$results = DB::table('users')->get();
-    $user= DB::table('users')->select('password')->where('email',$email)->where('estado','false')->get();
-    foreach ($user as $value) {
+    $results = DB::table('users')->get();
+    #$user= DB::table('users')->select('password')->where('email',$email)->where('estado','false')->get();
+    foreach ($results as $value) {
         $passdecrypt= Crypt::decrypt($value->password);
         if($value->email == $email && $passdecrypt == $password){
             echo "si logueo";
@@ -80,6 +80,17 @@ public function validarlogin(Request $request)
         }
     }
 }
+
+public function Login(Request $request){
+    $user= DB::table('users')->select('password')->where('email',$request->input("log_email"))->where('estado','false')->get();
+    foreach ($user as $user) {
+      $contraseña= Crypt::decrypt($user->password);
+      if ($contraseña==$request->input("log_pass")) {
+        #Cache::add('user',$request->input("log_email"),60);
+            return view('correoprincipal');
+      }
+    }
+  }
  
 }
 

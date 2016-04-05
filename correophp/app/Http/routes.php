@@ -37,7 +37,7 @@ Route::get('confirmacion', function () {
 
 Route::post('registro', 'UsersController@insertar');
 
-Route::post('loguear', 'UsersController@validarlogin');
+Route::post('loguear', 'UsersController@Login');
 
 #Route::post('mail','MailController@email');
 
@@ -58,8 +58,3 @@ Route::post('loguear', 'UsersController@validarlogin');
     //
 
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-});

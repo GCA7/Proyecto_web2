@@ -8,5 +8,5 @@ class Borrador extends Model
 {
     protected $table = "borradores"
 
-    protected $fillable = ['email', 'asunto', 'contenido'];
+    protected $fillable = ['email', 'para', 'asunto', 'contenido'];
 }

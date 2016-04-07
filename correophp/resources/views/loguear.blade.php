@@ -1,9 +1,8 @@
 @extends('layouts.principal')
 
-@section ('title', 'User Login')
+@section ('title', 'User Welcome')
 
 @section('content')
-
 	<section class="centrar container espacio col">
 			<form name="form_login" method="POST" action="{{asset('loguear')}}" >
 			{{Csrf_field ()}}
@@ -17,7 +16,7 @@
 								<form class="form-signin">
 									<input type="text" class="form-control" placeholder="Email" required autofocus id="email" name="log_email" required>
 									<input type="password" class="form-control" placeholder="Password" required id="contrasena" name="log_pass" required>
-									<button class="btn btn-lg btn-primary btn-block" type="submit" Onclick="LOGIN.Login();">
+									<button class="btn btn-lg btn-primary btn-block" type="submit">
 										Sign in</button>
 									</form>
 								</div>
@@ -26,5 +25,7 @@
 						</div>
 					</div>
 				</form>
+				<br>
+				<footer class="color h sombra animated bounceInLeft"><p>{{$error}}</p></footer>
 	</section>
 @stop

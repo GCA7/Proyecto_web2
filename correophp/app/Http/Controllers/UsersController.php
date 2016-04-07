@@ -23,17 +23,16 @@ class UsersController extends Controller
     {
         echo $request->input('username');
         if($this->validacion($request->input('email'))){
-            echo "funko";
             $user = new User;
             $user->username = $request->input('username');
             $user->email = $request->input('email');
             $user->password = Crypt::encrypt($request->input('password'));
             $user->save();
-            $this->email($request->input('email')); 
+    }
             return redirect('/login');
         }
         
-    }   
+       
 
     public function validacion($mail)
     {
@@ -52,14 +51,14 @@ class UsersController extends Controller
 
     public function email($correo)
     {
-   #$data=[];
-   #Mail::send('register', [ 'user'  =>  $data ], function ($msj) {
-          # $msj->from('letterinfo@letter.com', 'Letter Inc');
-
-           #$msj->to($correo)->subject('Favor ingrese al siguiente link para confirmar tu cuenta');
-            #echo "Si funko";
-        Mail($correo,'funke','correo','greivindca7@gmail.com');
-#});
+   $data=[];
+   echo $correo;
+   Mail::send('register', [ 'user'  =>  $data ], function ($msj) {
+           $msj->from('letterinfo@letter.com', 'Letter Inc');
+           $msj->to('greivindca7@gmail.com')->subject('Favor ingrese al siguiente link para confirmar tu cuenta');
+            echo "Si funko";
+        #Mail($correo,'funke','correo','greivindca7@gmail.com');
+});
     }
 
    public function Login(Request $request){
@@ -67,14 +66,14 @@ class UsersController extends Controller
     foreach ($user as $user) {
       $contraseña= Crypt::decrypt($user->password);
       if ($user->estado==0){
-        echo "No has activado tu cuenta";
+        return view('loguear', ['error' => 'No has activado tu cuenta']);
       }else{
       if ($contraseña == $request->input("log_pass") && $user->email == $request->input("log_email") ){
         #Cache::add('user',$request->input("email"),60);
         echo "funcko";
             return redirect('/correoprincipal');
       }else{
-        echo "usuario o contraseña incorrecta";
+        return view('loguear', ['error' => 'Usuario o contraseña incorrecta']);
       }
     }
     }
@@ -85,6 +84,18 @@ class UsersController extends Controller
     DB::table('users')->where('email', $request->input('email'))->update(['estado' => true]);
         return redirect('/loguear'); 
 }
+
+    public function nuevocorreo(Request $request)
+    {
+        $salida = new Salida;
+        echo $request->input('para');
+            $salida->email= 'greivindca7@gmail.com';
+            $salida->para = $request->input('para');
+            $salida->asunto = $request->input('asunto');
+            $salida->contenido = $request->input('contenido');
+            $salida->save();
+            return redirect('/loguear'); 
+    }
 
 }
 

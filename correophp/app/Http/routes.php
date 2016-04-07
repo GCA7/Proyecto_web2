@@ -31,6 +31,9 @@ Route::get('loguear', function () {
    return view('loguear');
 });
 
+Route::get('loguear', function () {
+   return view('loguear', ['error' => '']);});
+
 Route::get('confirmacion', function () {
    return view('confirmacion');
 });
@@ -38,6 +41,10 @@ Route::get('confirmacion', function () {
 Route::post('registro', 'UsersController@insertar');
 
 Route::post('loguear', 'UsersController@Login');
+
+Route::post('activar', 'UsersController@activaruser');
+
+Route::post('correoprincipal', 'UsersController@nuevocorreo');
 
 #Route::post('mail','MailController@email');
 

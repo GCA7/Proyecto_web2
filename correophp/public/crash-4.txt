@@ -1,16 +1,16 @@
-date/time         : 2016-03-28, 15:17:31, 520ms
+date/time         : 2016-03-29, 18:14:46, 281ms
 computer name     : GREIVIN
 user name         : Greivin
 operating system  : Windows NT New x64 build 9200
 system language   : English
-system up time    : 5 hours 59 minutes
-program up time   : 222 milliseconds
+system up time    : 1 day 8 hours
+program up time   : 298 milliseconds
 processors        : 4x AMD A4-5000 APU with Radeon(TM) HD Graphics
-physical memory   : 900/3525 MB (free/total)
-free disk space   : (C:) 273,40 GB
+physical memory   : 792/3525 MB (free/total)
+free disk space   : (C:) 278,04 GB
 display mode      : 1366x768, 32 bit
-process id        : $c80
-allocated memory  : 18,11 MB
+process id        : $148c
+allocated memory  : 17,95 MB
 command line      : "C:\xampp\sendmail\sendmail.exe" -t
 executable        : sendmail.exe
 exec. date/time   : 2012-04-16 11:30
@@ -21,26 +21,26 @@ exception number  : 1
 exception class   : Exception
 exception message : Message is missing sender's address.
 
-main thread ($f30):
+main thread ($32f8):
 004b59c5 +b11 sendmail.exe sendmail 686 +204 initialization
 74e438f2 +022 KERNEL32.DLL                   BaseThreadInitThunk
 
-thread $2ed4:
+thread $1cc:
 74e438f2 +22 KERNEL32.DLL  BaseThreadInitThunk
 
-thread $10d8:
+thread $1b98:
 74e438f2 +22 KERNEL32.DLL  BaseThreadInitThunk
 
-thread $327c:
+thread $257c:
 74e438f2 +22 KERNEL32.DLL  BaseThreadInitThunk
 
 stack dump:
 0019fdc4  ca 59 4b 00 de fa ed 0e - 01 00 00 00 07 00 00 00  .YK.............
-0019fdd4  d8 fd 19 00 ca 59 4b 00 - 50 4f 43 02 bc c2 41 00  .....YK.POC...A.
+0019fdd4  d8 fd 19 00 ca 59 4b 00 - 50 4f 31 02 bc c2 41 00  .....YK.PO1...A.
 0019fde4  b4 4e 4b 00 b4 4e 4b 00 - 80 ff 19 00 f4 fd 19 00  .NK..NK.........
 0019fdf4  00 fe 19 00 c8 4b 40 00 - 80 ff 19 00 0c fe 19 00  .....K@.........
 0019fe04  5f 4d 40 00 80 ff 19 00 - 74 ff 19 00 c8 4b 40 00  _M@.....t....K@.
-0019fe14  80 ff 19 00 b4 4e 4b 00 - b4 4e 4b 00 00 b0 34 00  .....NK..NK...4.
+0019fe14  80 ff 19 00 b4 4e 4b 00 - b4 4e 4b 00 00 f0 29 00  .....NK..NK...).
 0019fe24  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
 0019fe34  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
 0019fe44  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................

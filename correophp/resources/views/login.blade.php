@@ -1,5 +1,7 @@
 @extends('layouts.principal')
+
 @section('content')
+    <div>
         <section id="bloque1">
             <header>
             <a href="{{asset('/loguear')}}" class="btn btn-primary" id="button" name="btnlogin" type="submit">Log In</a>
@@ -10,7 +12,6 @@
         </section>
 
         <section class="shadow" id="bloque2">
-
 
         </section>
 
@@ -26,6 +27,6 @@
             <h2>Registro en sencillos pasos</h2>
 
         </section>
-
+    </div>
 
 @stop

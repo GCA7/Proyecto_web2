@@ -66,8 +66,9 @@ var LOGIN=LOGIN||
  var destinatario = document.getElementById("paramsj").value;
  var asunto = document.getElementById("asuntomsj").value;
  var contenido = document.getElementById("contenidomsj").value;
+ var useron=JSON.parse(localStorage.getItem("Online")).online;
  if(LOGIN.validarlightbox()){
-    window.open('correoprincipal/'+destinatario+'/'+asunto+'/'+contenido);
+    window.open('correoprincipal/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido);
   }
   document.getElementById("paramsj").value ="";
   document.getElementById("asuntomsj").value ="";

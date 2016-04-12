@@ -5,7 +5,7 @@
 		<nav>
 			<img class="im verticalLine"src="../img/email-icon.png">
 			<button class="boton b3" type="button" Onclick="{{asset('login')}}">Cerrar Sesion </button>
-			<img class="im dere2" id="imgavatar" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="../img/Avatar.png">
+			<img class="im dere2" id="imgavatar" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com" src="../img/Avatar.png">
 			<p class="der2 visible-desktop visible-tablet" id="nomuser"></p>
 			<p class="pe visible-desktop visible-tablet">Letter</p>
 			<p id="username" class="pe" value=""></p>
@@ -17,9 +17,9 @@
 				<button type="button" title="Crear correo nuevo" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 				<hr>
 				<ul >
-					<li id="salida"class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos(); LOGIN.seleccionado2();">Borrador</a><span class="badge left" id="icorreos"></span></li>
-					<li id="salida"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-inbox icon"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos(); LOGIN.seleccionado2();">Salida</a><span class="badge left" id="icorreos"></span></li>
-					<li id="enviados" class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-send icon"></span><a class="a left" onClick="LOGIN.cargarcorreosenviados(); LOGIN.seleccionado(); ">Enviados</a><span class="badge left" id="ienviados"></span></li>
+					<li id="salida"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected">Borrador</a><span class="badge left" id="icorreos"></span></li>
+					<li id="salida"class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox icon"></span><a class="a left" selected="selected" >Salida</a><span class="badge left" id="icorreos"></span></li>
+					<li id="enviados" class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-send icon"></span><a class="a left">Enviados</a><span class="badge left" id="ienviados"></span></li>
 				</ul>
 			</div>
 		</div>
@@ -36,35 +36,37 @@
 				</div>
 			</nav>
 		</section>
-		<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="exampleModalLabel">New message</h4>
-					</div>
-					<div class="modal-body">
-						<form id="emisor" method="POST" name="form_redactar" action="{{asset('correoprincipal')}}">
-							<div class="form-group">
-								<label for="recipient-name" class="control-label"></label>
-								<input type="text" class="form-control" id="paramsj" name="para" placeholder="Para:" multiple required>
+		<section>
+			<form name="modalform" method="POST">
+				<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="exampleModalLabel">New message</h4>
 							</div>
-							<div class="form-group">
-								<label for="recipient-name" class="control-label"></label>
-								<input type="text" class="form-control" id="asuntomsj" name="asunto" placeholder="Asunto:" required>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="recipient-name" class="control-label"></label>
+									<input type="text" class="form-control" id="paramsj" name="para" placeholder="Para:" multiple required>
+								</div>
+								<div class="form-group">
+									<label for="recipient-name" class="control-label"></label>
+									<input type="text" class="form-control" id="asuntomsj" name="asunto" placeholder="Asunto:" required>
+								</div>
+								<div class="form-group">
+									<label for="message-text" class="control-label"></label>
+									<textarea class="form-control" id="contenidomsj" name="contenido" placeholder="Message:"></textarea>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.enviadosguardado();">Save</button>
+									<button type="submit" class="btn btn-primary">Send</button>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="message-text" class="control-label"></label>
-								<textarea class="form-control" id="contenidomsj" name="contenido" placeholder="Message:"></textarea>
-							</div>
-							<div class="modal-footer">
-							<button type="submit" class="btn btn-default" data-dismiss="modal">Save</button>
-								<a type="submit" class="btn btn-primary">Send</a>
-							</div>
-						</form>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			</form>
+		</section>
 	</div>
 	@stop

@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Mail;
 use App\Http\Requests\UserRequest;
 use redirect;
+use App\Salida;
 
 class UsersController extends Controller
 {
@@ -83,18 +84,19 @@ class UsersController extends Controller
     { 
     DB::table('users')->where('email', $request->input('email'))->update(['estado' => true]);
         return redirect('/loguear'); 
-}
+    }
 
-    public function nuevocorreo(Request $request)
+    public function nuevocorreo($para, $asunto, $contenido)
     {
-        $salida = new Salida;
-        echo $request->input('para');
-            $salida->email= 'greivindca7@gmail.com';
-            $salida->para = $request->input('para');
-            $salida->asunto = $request->input('asunto');
-            $salida->contenido = $request->input('contenido');
-            $salida->save();
-            return redirect('/loguear'); 
+        echo "string";
+        $salidas = new Salida;
+            $salidas->email= 'greivindca7@gmail.com';
+            $salidas->para = $para;
+            $salidas->asunto = $asunto;
+            $salidas->contenido = $contenido;
+            $salidas->estado = true;
+            $salidas->save();
+            return redirect('correoprincipal'); 
     }
 
 }

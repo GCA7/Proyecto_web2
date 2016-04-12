@@ -4,7 +4,7 @@
 
 @section('content')
 	<section class="centrar container espacio col">
-			<form name="form_login" method="POST" action="{{asset('loguear')}}" >
+			<form name="form_login" method="POST" action="{{asset('loguear')}}">
 			{{Csrf_field ()}}
 				<div class="container animated zoomIn">
 					<div class="row">
@@ -14,9 +14,9 @@
 								<img class="profile-img" src="Imagenes/email-icon.png"
 								alt=""></br
 								<form class="form-signin">
-									<input type="text" class="form-control" placeholder="Email" required autofocus id="email" name="log_email" required>
+									<input type="text" class="form-control" placeholder="Email" required autofocus id="email_login" name="log_email" required>
 									<input type="password" class="form-control" placeholder="Password" required id="contrasena" name="log_pass" required>
-									<button class="btn btn-lg btn-primary btn-block" type="submit">
+									<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="LOGIN.useronline()">
 										Sign in</button>
 									</form>
 								</div>

@@ -44,7 +44,7 @@ Route::post('loguear', 'UsersController@Login');
 
 Route::post('activar', 'UsersController@activaruser');
 
-Route::post('correoprincipal', 'UsersController@nuevocorreo');
+Route::get('correoprincipal/{para}/{asunto}/{contenido}', 'UsersController@nuevocorreo');
 
 #Route::post('mail','MailController@email');
 

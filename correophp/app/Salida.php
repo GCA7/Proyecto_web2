@@ -8,5 +8,5 @@ class Salida extends Model
 {
     protected $table = "salidas";
 
-    protected $fillable = ['email', 'para', 'asunto', 'contenido'];
+    protected $fillable = ['email', 'para', 'asunto', 'contenido', 'estado'];
 }

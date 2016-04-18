@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Borrador extends Model
 {
-    protected $table = "borradores"
+    protected $table = "borradores";
 
-    protected $fillable = ['email', 'para', 'asunto', 'contenido'];
+    protected $fillable = ['email', 'para', 'asunto', 'contenido', 'estado'];
 }

@@ -55,7 +55,7 @@
     y la Politica de Privacidad de Letter.
 </p>
 </br>
-<button class="boton sombra" type="submit" target="_blank" href="{{asset('/login')}}" >Acceder </button> 
+<button class="boton sombra" type="submit" target="_blank">Acceder </button> 
 <a class="boton sombra" type="submit" href="{{asset('/login')}}" >Cancelar </a> </br>
 </form>
 </div>

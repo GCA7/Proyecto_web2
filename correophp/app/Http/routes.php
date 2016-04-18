@@ -27,6 +27,10 @@ Route::get('correoprincipal', function () {
    return view('correoprincipal');
 });
 
+Route::get('borrador', function () {
+   return view('correoprincipal');
+});
+
 Route::get('loguear', function () {
    return view('loguear');
 });
@@ -50,6 +54,9 @@ Route::get('correoprincipal', function(){
 	return view('correoprincipal', ['correos' => '']);});
 
 Route::get('correoprincipal', 'UsersController@cargarcorreossalida');
+Route::get('borrador', 'UsersController@cargarcorreosborrador');
+
+Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}', 'UsersController@nuevoguardado');
 
 #Route::post('mail','MailController@email');
 

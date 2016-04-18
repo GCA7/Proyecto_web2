@@ -15,6 +15,7 @@ class Bandejasalida extends Migration
         Schema::create('salidas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
+             $table->string('destinatario');
             $table->string('asunto');
             $table->string('contenido');
             $table->foreign('email')->references('email')->on('users')->onDelete('cascade');

@@ -29,14 +29,13 @@
 				<a value="Actualizar Página" onclick="window.location.reload()"><span title="Recargar la página" class="glyphicon glyphicon-refresh tamano-icon visible-desktop visible-tablet"> </span></a>
 			</div>
 			<hr class="visible-desktop visible-tablet">
+			<div class="container">
 			<div class="row" id="correos_borrados">
-				<div class="col-sm-4 col-md-6">
+				<div class="col-sm-6 col-md-10">
 					<?php if (is_array ($correos)) {
 						foreach($correos as $correos) { ?>
-						<tr>
-							<div class=" verticalLine3">
 								<div class="nave pr2 pr imagenConPieDeTexto sombra" onClick="location.href='encontenido.html'">&nbsp;
-									<p class="text" style="color:black"><?php echo( $correos->asunto ); ?></p>
+									<header class="pr"><p class="text" style="color:black"><?php echo( $correos->asunto ); ?></p></header>
 									<p class="text" style="color:black"><?php echo( $correos->destinatario ); ?></p>
 									<p class="text" style="color:gray"><?php echo( $correos->contenido ); ?></p>
 									<a href="eliminar2.html" title="Elimiar correo">
@@ -44,11 +43,9 @@
 									</a>
 									<b class="linea">12:23</b>
 								</div>
-							</div>
-						</tr>
-
 						<?php }} ?>
 					</div>
+				</div>
 				</div>
 			</nav>
 		</section>

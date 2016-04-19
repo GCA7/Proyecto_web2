@@ -90,6 +90,7 @@ public function activaruser(Request $request)
 
 public function nuevocorreo($usuario, $para, $asunto, $contenido)
 {
+    echo "string";
     $salidas = new Salida;
     $salidas->email= $usuario;
     $salidas->destinatario = $para;

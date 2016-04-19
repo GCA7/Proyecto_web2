@@ -500,8 +500,7 @@ footer {
     text-align: left;
     background-color: lightgray;
     float: center;
-    height: auto;
-    width: 90%;
+    width: 100%;
     padding-bottom: 7px;
 }
 

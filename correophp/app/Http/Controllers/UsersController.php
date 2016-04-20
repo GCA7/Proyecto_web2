@@ -137,6 +137,14 @@ public function nuevoenviado($usuario, $destinatario, $asunto, $contenido)
     return redirect('correoprincipal'); 
 }
 
+public function eliminarcorreo($id)
+{
+    echo $id;
+    $user = Cache::get('usuario');
+    $correos= DB::table('salidas')->where('id', '=',$id)->delete();
+    return redirect('correoprincipal'); 
+}
+
 
 }
 

@@ -161,7 +161,6 @@ var LOGIN=LOGIN||
       "<button title='Enviar mensaje editado' class='boton b2 bt' type=button onClick='LOGIN.guardaredicion("+i+");'><span class='glyphicon glyphicon-ok'></span></button><button title='Cancelar edicion' onClick='document.getElementById("+"O"+i+").style.display='none';' class='boton b2 bt colo sp' type=button><span class='glyphicon glyphicon-remove'></span></button></div></br></div></div></div>";
       break;
     }
-
   }
   document.getElementById("C"+edit).innerHTML=editarmensaje;
 },seleccionado:function(){

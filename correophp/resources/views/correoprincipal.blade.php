@@ -17,7 +17,7 @@
 				<button type="button" title="Crear correo nuevo" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 				<hr>
 				<ul >
-					<li id="salida"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" location.href('borrador')>Borrador</a><span class="badge left" id="icorreos"></span></li>
+					<li id="salida"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" href='borrador'>Borrador</a><span class="badge left" id="icorreos"></span></li>
 					<li id="salida"class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox icon"></span><a class="a left" selected="selected" location.href('correoprincipal')>Salida</a><span class="badge left" id="icorreos"></span></li>
 					<li id="enviados" class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-send icon"></span><a class="a left" location.href('')>Enviados </a><span class="badge left" id="ienviados"></span></li>
 				</ul>
@@ -38,8 +38,10 @@
 									<header><p class="text" style="color:black"><?php echo( $correos->asunto ); ?></p></header>
 									<p class="text" style="color:black"><?php echo( $correos->destinatario ); ?></p>
 									<p class="text" style="color:gray"><?php echo( $correos->contenido ); ?></p>
-									<a href('correoprincipal/{<?php echo( $correos->id );?>}') title="Eliminar correo">
+									<a href="correoprincipal\<?php echo( $correos->id);?>" title="Eliminar correo">
 										<img class="im linea paddingr glyphicon glyphicon-trash"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									</a>
+									<a data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"  title="Editar correo">
 										<img class="im linea paddingr glyphicon glyphicon-trash"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									</a>
 									<b class="linea">12:23</b>

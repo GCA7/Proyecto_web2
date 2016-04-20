@@ -139,13 +139,19 @@ public function nuevoenviado($usuario, $destinatario, $asunto, $contenido)
 
 public function eliminarcorreo($id)
 {
-    echo $id;
     $user = Cache::get('usuario');
     $correos= DB::table('salidas')->where('id', '=',$id)->delete();
     return redirect('correoprincipal'); 
 }
 
+public function editarcorreos($id, $destinatario, $asunto, $contenido)
+{
+    $user = Cache::get('usuario');
+    DB::table('salidas')
+            ->where('id', $id)
+            ->update(['destinatario' => $para,'asunto'=> $asunto,'contenido'=>$contenido]);
 
+}
 }
 
 

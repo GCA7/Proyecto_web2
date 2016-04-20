@@ -61,6 +61,10 @@ Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}', 'UsersContr
 
 Route::any('correoprincipal/{id}', 'UsersController@eliminarcorreo');
 
+Route::any('correoprincipal/{id}/{usuario}/{destinatario}/{asunto}/{contenido}', 'UsersController@editarcorreo');
+
+
+
 #Route::post('mail','MailController@email');
 
 

@@ -40,6 +40,7 @@
 									<p class="text" style="color:gray"><?php echo( $correos->contenido ); ?></p>
 									<a href('correoprincipal/{<?php echo( $correos->id );?>}') title="Eliminar correo">
 										<img class="im linea paddingr glyphicon glyphicon-trash"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+										<img class="im linea paddingr glyphicon glyphicon-trash"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									</a>
 									<b class="linea">12:23</b>
 								</div>

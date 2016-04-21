@@ -18,6 +18,8 @@ class Bandejaenviado extends Migration
             $table->string('destinatario');
             $table->string('asunto');
             $table->string('contenido');
+            $table->boolean('estado');
+            $table->string('bandeja');
             $table->foreign('email')->references('email')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

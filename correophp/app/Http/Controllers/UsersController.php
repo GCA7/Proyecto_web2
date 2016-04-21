@@ -23,17 +23,15 @@ class UsersController extends Controller
 
     public function insertar(UserRequest $request)
     {
-        echo "string";
         #if($this->validacion($request->input('email'))){
-        echo "string2";
         $user = new User;
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = Crypt::encrypt($request->input('password'));
         $user->save();
+        $this->email($request->input('username'));
         return redirect('login'); 
-        #}
-        
+        #}  
     }
 
     public function validacion($mail)
@@ -55,12 +53,14 @@ class UsersController extends Controller
     {
      $data=[];
      echo $correo;
-     Mail::send('register', [ 'user'  =>  $data ], function ($msj) {
-         $msj->from('letterinfo@letter.com', 'Letter Inc');
-         $msj->to('greivindca7@gmail.com')->subject('Favor ingrese al siguiente link para confirmar tu cuenta');
-         echo "Si funko";
+   Mail::send('confirmacion', $data, function ($message) use ($correo){
+
+    $message->subject('confirmacion ');
+
+    $message->to('greivindca7@gmail.com');
+     echo "Si funko";
+});
         #Mail($correo,'funke','correo','greivindca7@gmail.com');
-     });
  }
 
  public function Login(Request $request){
@@ -88,40 +88,43 @@ public function activaruser(Request $request)
     return redirect('/loguear'); 
 }
 
-public function nuevocorreo($usuario, $para, $asunto, $contenido)
+public function nuevocorreo($usuario, $para, $asunto, $contenido, $bandeja)
 {
-    echo "string";
     $salidas = new Salida;
     $salidas->email= $usuario;
     $salidas->destinatario = $para;
     $salidas->asunto = $asunto;
     $salidas->contenido = $contenido;
     $salidas->estado = true;
+    $salidas->bandeja = $bandeja;
     $salidas->save();
     return redirect('correoprincipal'); 
 }
 
 public function cargarcorreossalida() {
     $user = Cache::get('usuario');
-    $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido')->where('email', $user)->get();
+    $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
     return view('correoprincipal', ['correos' => $correos]);
 }
 
-public function nuevoguardado($usuario, $destinatario, $asunto, $contenido)
+public function nuevoguardado($usuario, $destinatario, $asunto, $contenido, $bandeja)
 {
+    echo "string";
     $salidas = new Borrador;
     $salidas->email= $usuario;
     $salidas->destinatario = $destinatario;
     $salidas->asunto = $asunto;
     $salidas->contenido = $contenido;
     $salidas->estado = false;
+    $salidas->bandeja = $bandeja;
     $salidas->save();
     return redirect('correoprincipal'); 
 }
 
-public function cargarcorreosborrador() {
+public function cargarcorreosborrador() 
+{
     $user = Cache::get('usuario');
-    $correos= DB::table('borradores')->select('id', 'email', 'asunto', 'destinatario', 'contenido')->where('email', $user)->get();
+    $correos= DB::table('borradores')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
     return view('correoprincipal', ['correos' => $correos]);
 }
 
@@ -137,11 +140,16 @@ public function nuevoenviado($usuario, $destinatario, $asunto, $contenido)
     return redirect('correoprincipal'); 
 }
 
-public function eliminarcorreo($id)
+public function eliminarcorreo($id, $bandeja)
 {
     $user = Cache::get('usuario');
+    if($bandeja=='salida'){
     $correos= DB::table('salidas')->where('id', '=',$id)->delete();
-    return redirect('correoprincipal'); 
+    return redirect('correoprincipal');
+    }else if($bandeja=='borrador'){
+    $correos= DB::table('borradores')->where('id', '=',$id)->delete();
+    return redirect('correoprincipal');
+    } 
 }
 
 public function editarcorreos($id, $destinatario, $asunto, $contenido)
@@ -150,7 +158,6 @@ public function editarcorreos($id, $destinatario, $asunto, $contenido)
     DB::table('salidas')
             ->where('id', $id)
             ->update(['destinatario' => $para,'asunto'=> $asunto,'contenido'=>$contenido]);
-
 }
 }
 

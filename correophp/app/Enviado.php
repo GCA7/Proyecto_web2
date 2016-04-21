@@ -8,5 +8,5 @@ class Enviado extends Model
 {
     protected $table = "enviados";
 
-    protected $fillable = ['email', 'para', 'asunto', 'contenido', 'estado'];
+    protected $fillable = ['email', 'para', 'asunto', 'contenido', 'estado', 'bandeja'];
 }

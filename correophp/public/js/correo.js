@@ -67,8 +67,11 @@ var LOGIN=LOGIN||
  var asunto = document.getElementById("asuntomsj").value;
  var contenido = document.getElementById("contenidomsj").value;
  var useron=JSON.parse(localStorage.getItem("Online")).online;
+ var bandeja="salida";
  if(LOGIN.validarlightbox()){
-    window.open('correoprincipal/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido);
+    var actual=window.location.href;
+    window.open('correoprincipal/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido+'/'+bandeja);
+    window.close(actual);
   }
   document.getElementById("paramsj").value ="";
   document.getElementById("asuntomsj").value ="";
@@ -186,8 +189,11 @@ var LOGIN=LOGIN||
  var asunto = document.getElementById("asuntomsj").value;
  var contenido = document.getElementById("contenidomsj").value;
  var useron=JSON.parse(localStorage.getItem("Online")).online;
+ var borrador = "borrador";
  if(LOGIN.validarlightbox()){
-    window.open('borrador/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido);
+    var actual=window.location.href;
+    window.open('borrador/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido+'/'+borrador);
+    window.close(actual);
   }
   document.getElementById("paramsj").value ="";
   document.getElementById("asuntomsj").value ="";

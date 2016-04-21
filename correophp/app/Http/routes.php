@@ -48,18 +48,18 @@ Route::post('loguear', 'UsersController@Login');
 
 Route::post('activar', 'UsersController@activaruser');
 
-Route::get('correoprincipal/{usuario}/{para}/{asunto}/{contenido}', 'UsersController@nuevocorreo');
+Route::get('correoprincipal/{usuario}/{para}/{asunto}/{contenido}/{bandeja}', 'UsersController@nuevocorreo');
 
 Route::get('correoprincipal', function(){
 	return view('correoprincipal', ['correos' => '']);});
 
-Route::get('correoprincipal', 'UsersController@cargarcorreossalida');
+Route::get('principal', 'UsersController@cargarcorreossalida');
 
 Route::get('borrador', 'UsersController@cargarcorreosborrador');
 
-Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}', 'UsersController@nuevoguardado');
+Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}/{bandeja}', 'UsersController@nuevoguardado');
 
-Route::any('correoprincipal/{id}', 'UsersController@eliminarcorreo');
+Route::any('correoprincipal/{id}/{bandeja}', 'UsersController@eliminarcorreo');
 
 Route::any('correoprincipal/{id}/{usuario}/{destinatario}/{asunto}/{contenido}', 'UsersController@editarcorreo');
 

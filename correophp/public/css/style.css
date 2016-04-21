@@ -117,7 +117,10 @@ h3 {
 
 
 
-
+.boton{
+    width: 10%;
+    height: 1px;
+}
 
 .letras{
     font-size: 50px;

@@ -29,7 +29,7 @@ class UsersController extends Controller
         $user->email = $request->input('email');
         $user->password = Crypt::encrypt($request->input('password'));
         $user->save();
-        $this->email($request->input('username'));
+        $this->email($request->input('email'));
         return redirect('login'); 
         #}  
     }
@@ -52,13 +52,11 @@ class UsersController extends Controller
     public function email($correo)
     {
      $data=[];
-     echo $correo;
    Mail::send('confirmacion', $data, function ($message) use ($correo){
 
     $message->subject('confirmacion ');
 
-    $message->to('greivindca7@gmail.com');
-     echo "Si funko";
+    $message->to($correo);
 });
         #Mail($correo,'funke','correo','greivindca7@gmail.com');
  }

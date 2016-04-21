@@ -56,7 +56,7 @@
 </p>
 </br>
 <button class="boton sombra" type="submit" target="_blank">Acceder </button> 
-<a class="boton sombra" type="submit" href="{{asset('/login')}}" >Cancelar </a> </br>
+<button class="boton sombra" type="submit" href='login' >Cancelar </button> </br>
 </form>
 </div>
 </div>

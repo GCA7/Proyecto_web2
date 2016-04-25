@@ -498,13 +498,11 @@ footer {
     background-color: black;
 }
 .nave{
-    padding-top: 1%;
-    margin: 1px;
     text-align: left;
     background-color: lightgray;
     float: center;
     width: 100%;
-    padding-bottom: 7px;
+    height: 47px;
 }
 
 .arr{

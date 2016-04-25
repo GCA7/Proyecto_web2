@@ -57,9 +57,13 @@ Route::get('principal', 'UsersController@cargarcorreossalida');
 
 Route::get('borrador', 'UsersController@cargarcorreosborrador');
 
+Route::get('enviados', 'UsersController@cargarcorreosenviado');
+
 Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}/{bandeja}', 'UsersController@nuevoguardado');
 
 Route::any('correoprincipal/{id}/{bandeja}', 'UsersController@eliminarcorreo');
+
+Route::any('editar/{id}', 'UsersController@editarcorreo');
 
 Route::any('correoprincipal/{id}/{usuario}/{destinatario}/{asunto}/{contenido}', 'UsersController@editarcorreo');
 

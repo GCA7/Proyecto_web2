@@ -82,7 +82,7 @@ class UsersController extends Controller
 
 public function activaruser(Request $request)
 { 
-    DB::table('users')->where('email', $request->input('email'))->update(['estado' => true]);
+    DB::table('users')->where('email', $request->input('email'))->update(['estado' => 1]);
     return redirect('/loguear'); 
 }
 
@@ -157,6 +157,23 @@ public function editarcorreos($id, $destinatario, $asunto, $contenido)
             ->where('id', $id)
             ->update(['destinatario' => $para,'asunto'=> $asunto,'contenido'=>$contenido]);
 }
+
+public function enviarcorreos($correos){
+ $data=[];
+   Mail::send('confirmacion', $data, function ($message) use ($correos){
+
+    $message->subject($correos->asunto);
+
+    $message->to($correo->email);
+});
+}
+
+public function cargarcorreosenviado() {
+    $user = Cache::get('usuario');
+    $correos= DB::table('enviados')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
+    return view('correoprincipal', ['correos' => $correos]);
+}
+
 }
 
 

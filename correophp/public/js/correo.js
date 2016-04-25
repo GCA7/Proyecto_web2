@@ -99,26 +99,15 @@ var LOGIN=LOGIN||
   }
   document.getElementById(maniacs).innerHTML=borrador_html;
 
-},mostrarcontenidoenviados:function(aid){
+},mostrarcontenido:function(){
   //funcion que muestra el contenido del correo de la bandeja de enviados
   debugger;
-  var enviado_html = "";
-  this.aid=aid;
-  enviado= JSON.parse(localStorage.getItem("Enviados"));
-  for (var i = 0; i < enviado.length; i++) {
-    if(i===aid){
-      var mani="E"+i;
-      var envi=enviado[i];
-      enviado_html = enviado_html +"<div id="+"M"+i+" class='ocultar pr colocar animated fadeOutDown'><div><div class=colornuevo sombra2>"+
-      "<header class=he><div><p class=txt izq>"+envi.asunto+"</p><div class=>"+
-      "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
-      "<a onclick='' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
-      "<a/><a onClick='LOGIN.eliminarcorreoenviados();' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
-      +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+envi.para+"</p>"+"<div>"+"<header>" + envi.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+envi.contenido+"</p>"+"</div>"+"</div>"
-      +"</div></div></div>";
-    }
-  }
-  document.getElementById(mani).innerHTML=enviado_html;
+  var des = document.getElementById("des").value;
+  var asu = document.getElementById("as").value;
+  var con = document.getElementById("con").value;
+  document.getElementById("param").value ="des";
+  document.getElementById("asuntom").value ="as";
+  document.getElementById("contenidom").value ="con";
 
 },contoculto:function(aidi2){
   //funcion que muestra el contenido oculto del correo de la bandeja de salida
@@ -149,23 +138,15 @@ var LOGIN=LOGIN||
  var uuser = JSON.parse(localStorage.getItem("Online")).online;
  $('#nomuser').html(uuser);
 
-},editarcorreoborrador:function(edit){
+},editarcorreo:function(){
   //funcion que permite editar correos en la bandeja de salida
   debugger;
-  this.edit = edit;
-  document.getElementById("M"+edit).style.display='none';
-  editarcorreo= JSON.parse(localStorage.getItem("Borradores"));
-  for (var i = 0; i < editarcorreo.length; i++) {
-    if(edit===i){
-      var editarmensaje= "<div>"+
-      "<div id="+"O"+i+" onClick='LOGIN.contoculto2("+edit+");'></div><div class='colornuevo sombra2'><header class='he'><div><input id='ediasunto' class='ta color' type=text value="+editarcorreo[i].asunto+"></div>"+
-      "</header><hr><div class='div'><input id='edipara' class='ta color' type=text value="+editarcorreo[i].para+">"+
-      "<div></br><textarea id='edicontenido' class='tamano3 col2' type='text' placeholder='Escribe aqui'>"+editarcorreo[i].contenido+"</textarea>"+
-      "<button title='Enviar mensaje editado' class='boton b2 bt' type=button onClick='LOGIN.guardaredicion("+i+");'><span class='glyphicon glyphicon-ok'></span></button><button title='Cancelar edicion' onClick='document.getElementById("+"O"+i+").style.display='none';' class='boton b2 bt colo sp' type=button><span class='glyphicon glyphicon-remove'></span></button></div></br></div></div></div>";
-      break;
-    }
-  }
-  document.getElementById("C"+edit).innerHTML=editarmensaje;
+  var des = document.getElementById("des").value;
+  var asu = document.getElementById("as").value;
+  var con = document.getElementById("con").value;
+  document.getElementById("param").value ="des";
+  document.getElementById("asuntom").value ="as";
+  document.getElementById("contenidom").value ="con";
 },seleccionado:function(){
   //funcion para que el usuario note cual bandeja tiene seleccionada (bandeja de enviados)
   debugger;

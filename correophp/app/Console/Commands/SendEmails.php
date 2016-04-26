@@ -58,7 +58,7 @@ class SendEmails extends Command
                     $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido')->where('email', $user)->delete();
 
                 }
-          $this->info('Se han enviando todos los correos');      
+          $this->info('Letters enviados correctamente');      
         }
         else{
             $this->info('No hay correos pendientes');   

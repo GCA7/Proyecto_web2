@@ -69,7 +69,7 @@ class UsersController extends Controller
         return view('loguear', ['error' => 'No has activado tu cuenta, favor revisa tu correo']);
     }else{
       if ($contraseña == $request->input("log_pass") && $user->email == $request->input("log_email") ){
-        Cache::add('usuario',$request->input("log_email"),60);
+        Cache::add('usuario',$request->input("log_email"),120);
         return redirect('/correoprincipal');
     }else{
         return view('loguear', ['error' => 'Usuario o contraseña incorrecta']);

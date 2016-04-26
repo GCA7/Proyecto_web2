@@ -173,6 +173,7 @@ var LOGIN=LOGIN||
   document.getElementById("paramsj").value ="";
   document.getElementById("asuntomsj").value ="";
   document.getElementById("contenidomsj").value ="";
-}
 
+}
+  
 }

@@ -32,7 +32,7 @@
 						<?php if (is_array ($correos)) {
 							foreach($correos as $correos) { ?>
 							<div>
-								<div class='nave panel panel-default imagenConPieDeTexto sombra'>
+								<div class='distancia nave panel panel-default imagenConPieDeTexto sombra'>
 								<div onClick="LOGIN.mostrarcontenido(<?php echo $correos->id?>);" data-toggle="modal" data-toggle="modal" data-target="#myModal" name="contenidos">
 									<span class= 'glyphicon glyphicon-envelope img-tam2'></span>
 									<span id="corrsun" name="corrsun" class='text' style='color:black' ><?php echo( $correos->asunto ); ?>&nbsp;</span>
@@ -56,7 +56,7 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+											<h5 class="modal-title" id="exampleModalLabel">New message</h5>
 										</div>
 										<div class="modal-body">
 											<div class="form-group">
@@ -87,7 +87,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+										<h5 class="modal-title" id="myModalLabel">Ver Correo</h5>
 									</div>
 									<div class="modal-body">
 										<div class="form-group">

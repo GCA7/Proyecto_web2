@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="col-md-12">
+    <div class="col-md-12 register">
         <h1 class="letras">Crea tu cuenta de Letter</h1>
         <div class="row">
             <div class="col-md-4 visible-desktop visible-tablet">

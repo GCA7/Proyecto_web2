@@ -25,96 +25,87 @@
 		</div>
 		<nav class="floatright">
 			<p id="fecha" class="hoy salto visible-desktop visible-tablet">Hoy</p>
-			<div class="dere">
-				<a value="Actualizar Página" onclick="window.location.reload()"><span title="Recargar la página" class="glyphicon glyphicon-refresh tamano-icon visible-desktop visible-tablet"> </span></a>
-			</div>
 			<hr class="visible-desktop visible-tablet">
-			<div  data-toggle="modal" data-toggle="modal" data-target="#myModal" onclick="LOGIN.editarcorreo();">
+			<div onclick="LOGIN.editarcorreo();">
 				<div  id="correos_borrados">
 					<div >
 						<?php if (is_array ($correos)) {
 							foreach($correos as $correos) { ?>
-							<div class="nave pr imagenConPieDeTexto sombra">&nbsp;
 							<div>
-								<header><p class="text" style="color:black" id="as"><?php echo( $correos->asunto ); ?></p></header>
+								<div class='nave panel panel-default imagenConPieDeTexto sombra'>
+								<div onClick='LOGIN.contoculto("+i+");'data-toggle="modal" data-toggle="modal" data-target="#myModal" >
+									<span class= 'glyphicon glyphicon-envelope img-tam2'></span>
+									<span id='corrasun' class='text' style='color:black' ><?php echo( $correos->asunto ); ?>&nbsp;</span>
+									<span id='corrcont' class='text' style='color:gray' maxlength='10'><?php echo( $correos->contenido ); ?></span>
+									</div>
+									<a title='Eliminar correo' id='trash' class='glyphicon glyphicon-trash img-tam' style='float:right' href="correoprincipal\<?php echo( $correos->id);?>\<?php echo( $correos->bandeja);?>"></a>
+									<a title='Editar correo' id='edit' class='glyphicon glyphicon-pencil img-tam' style='float:right' href="correoprincipal\<?php echo( $correos->id);?>\<?php echo( $correos->bandeja);?>"></a>
+									</div>
+								<nav>
+								</nav>
 								</div>
-								<div>
-								<p class="text" style="color:black" id="des"><?php echo( $correos->destinatario ); ?></p>
-								<p class="text" style="color:gray" id="con"><?php echo( $correos->contenido ); ?></p>
-								</div>
-								<a id="id" href="correoprincipal\<?php echo( $correos->id);?>\<?php echo( $correos->bandeja);?>" title="Eliminar correo">
-									<img class="im linea paddingr glyphicon glyphicon-trash"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-								</a>
-								<a data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"  title="Editar correo">
-									<img class="im linea paddingr glyphicon glyphicon-trash"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								</a>
-							</div>
-							<?php }} ?>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</section>
-		<section>
-			<form name="modalform" method="POST">
-				<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="exampleModalLabel">New message</h4>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<label for="recipient-name" class="control-label"></label>
-									<input type="text" class="form-control" id="paramsj" name="para" placeholder="Para:" multiple required>
-								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="control-label"></label>
-									<input type="text" class="form-control" id="asuntomsj" name="asunto" placeholder="Asunto:" required>
-								</div>
-								<div class="form-group">
-									<label for="message-text" class="control-label"></label>
-									<textarea class="form-control" id="contenidomsj" name="contenido" placeholder="Message:"></textarea>
-								</div>
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-default" onClick="LOGIN.borradorguardado();">Save</button>
-									<button type="submit" class="btn btn-primary" onClick="LOGIN.enviadosguardado();">Send</button>
+										<?php }} ?>
+									</div>
 								</div>
 							</div>
+						</nav>
+					</section>
+					<section>
+						<form name="modalform" method="POST">
+							<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+										</div>
+										<div class="modal-body">
+											<div class="form-group">
+												<label for="recipient-name" class="control-label"></label>
+												<input type="text" class="form-control" id="paramsj" name="para" placeholder="Para:" multiple required>
+											</div>
+											<div class="form-group">
+												<label for="recipient-name" class="control-label"></label>
+												<input type="text" class="form-control" id="asuntomsj" name="asunto" placeholder="Asunto:" required>
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="control-label"></label>
+												<textarea class="form-control" id="contenidomsj" name="contenido" placeholder="Message:"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button type="submit" class="btn btn-default" onClick="LOGIN.borradorguardado();">Save</button>
+												<button type="submit" class="btn btn-primary" onClick="LOGIN.enviadosguardado();">Send</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- Modal -->
+						<div class="modal fade animated fadeInUp arr" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<label for="recipient-name" class="control-label"></label>
+											<input type="text" class="form-control" id="param" name="para" placeholder="Para:" multiple required disabled="true">
+										</div>
+										<div class="form-group">
+											<label for="recipient-name" class="control-label"></label>
+											<input type="text" class="form-control" id="asuntom" name="asunto" placeholder="Asunto:" required disabled="true">
+										</div>
+										<div class="form-group">
+											<label for="message-text" class="control-label"></label>
+											<textarea class="form-control" id="contenidom" name="contenido" placeholder="Message:" disabled="true"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+					</section>
 				</div>
-			</form>
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-									<label for="recipient-name" class="control-label"></label>
-									<input type="text" class="form-control" id="param" name="para" placeholder="Para:" multiple required>
-								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="control-label"></label>
-									<input type="text" class="form-control" id="asuntom" name="asunto" placeholder="Asunto:" required>
-								</div>
-								<div class="form-group">
-									<label for="message-text" class="control-label"></label>
-									<textarea class="form-control" id="contenidom" name="contenido" placeholder="Message:"></textarea>
-								</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
-	@stop
+				@stop

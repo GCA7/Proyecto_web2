@@ -107,7 +107,6 @@ public function cargarcorreossalida() {
 
 public function nuevoguardado($usuario, $destinatario, $asunto, $contenido, $bandeja)
 {
-    echo "string";
     $salidas = new Borrador;
     $salidas->email= $usuario;
     $salidas->destinatario = $destinatario;
@@ -147,7 +146,10 @@ public function eliminarcorreo($id, $bandeja)
     }else if($bandeja=='borrador'){
     $correos= DB::table('borradores')->where('id', '=',$id)->delete();
     return redirect('correoprincipal');
-    } 
+    } else if($bandeja=='enviado'){
+    $correos= DB::table('enviados')->where('id', '=',$id)->delete();
+    return redirect('correoprincipal');
+    }
 }
 
 public function editarcorreos($id, $destinatario, $asunto, $contenido)
@@ -164,7 +166,7 @@ public function enviarcorreos($correos){
 
     $message->subject($correos->asunto);
 
-    $message->to($correo->email);
+    $message->to($correos->email);
 });
 }
 

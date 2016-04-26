@@ -43,17 +43,20 @@ class SendEmails extends Command
     {
         //
         $enviado = new Enviado();
-        #$user = Cache::get('usuario');
+        $user = Cache::get('usuario');
         $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido')->get();
         if($correos != null){
                 foreach ($correos as $correo) {
-                    #$correo->enviarcorreos($correo);
+                    #$this->enviarcorreos($correos);
                     $enviado->email= $correo->email;
                     $enviado->destinatario = $correo->destinatario;
                     $enviado->asunto = $correo->asunto;
                     $enviado->contenido = $correo->contenido;
+                    $enviado->bandeja = 'enviado';
                     $enviado->estado = true;
                     $enviado->save();
+                    $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido')->where('email', $user)->delete();
+
                 }
           $this->info('Se han enviando todos los correos');      
         }

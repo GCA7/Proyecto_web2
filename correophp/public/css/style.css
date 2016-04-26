@@ -115,11 +115,17 @@ h3 {
 }
 
 
-
-
-.boton{
+.register{
+    margin-top: -80px;
+}
+.confirm{
+    margin-top: 2%;
+}
+.botones{
     width: 10%;
-    height: 1px;
+    height: 1%;
+    padding-top: 1%;
+    padding-bottom: 0%;
 }
 
 .letras{

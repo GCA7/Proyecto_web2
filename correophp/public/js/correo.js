@@ -2,7 +2,6 @@ var conti=0;
 var conta=0;
 var cambio=true;
 
-
 var LOGIN=LOGIN||
 { 
 	mostrar:function(){
@@ -12,7 +11,6 @@ var LOGIN=LOGIN||
   document.getElementById('btnsesion').style.display = 'none';
   document.getElementById('btnregistro').style.display = 'none';
 
-	
 },useronline:function(){
   //funcion que guarda el usuario que se acaba de loguear
   debugger;
@@ -60,7 +58,7 @@ var LOGIN=LOGIN||
   }
   $("#redactar").click();
 
-},enviadosguardado:function(){
+},enviadosguardado:function(aidi){
   //funcion para guardar los correos de la bandeja de enviados
  debugger;
  var destinatario = document.getElementById("paramsj").value;
@@ -70,7 +68,7 @@ var LOGIN=LOGIN||
  var bandeja="salida";
  if(LOGIN.validarlightbox()){
     var actual=window.location.href;
-    window.open('correoprincipal/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido+'/'+bandeja);
+    window.open('correoprincipal/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido+'/'+bandeja+'/'+aidi);
     window.close(actual);
   }
   document.getElementById("paramsj").value ="";
@@ -80,34 +78,9 @@ var LOGIN=LOGIN||
 },mostrarcontenido:function(aidi){
   //funcion que muestra el contenido del correo de la bandeja de salida
   debugger;
-  var enviado_html = "";
-  this.aidi=aidi;
-  salida= JSON.parse(localStorage.getItem("Borradores"));
-  for (var i = 0; i < salida.length; i++) {
-    if(i===aidi){
-      var maniacs="C"+i;
-      var mos=salida[i];
-      borrador_html = borrador_html +"<div id="+"M"+i+" class='ocultar pr colocar animated fadeOutDown'><div><div class=colornuevo sombra2>"+
-      "<header class='he'><div><p class=txt izq>"+mos.asunto+"</p><div class=>"+
-      "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
-      "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
-      "<a onClick='' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
-      "<a/><a onClick='LOGIN.eliminarcorreoborrador();' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
-      +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+mos.para+"</p>"+"<div>"+"<header>" + mos.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+mos.contenido+"</p>"+"</div>"+"</div>"
-      +"</div></div></div>";
-    }
-  }
-  document.getElementById(maniacs).innerHTML=borrador_html;
-
-},mostrarcontenido:function(){
-  //funcion que muestra el contenido del correo de la bandeja de enviados
-  debugger;
-  var des = document.getElementById("des").value;
-  var asu = document.getElementById("as").value;
-  var con = document.getElementById("con").value;
-  document.getElementById("param").value ="des";
-  document.getElementById("asuntom").value ="as";
-  document.getElementById("contenidom").value ="con";
+  document.forms["cargar"]["para"].value=document.getElementById('corrpara').innerText;
+  document.forms["cargar"]["asuntom"].value=document.getElementById('corrsun').innerText;
+  document.forms["cargar"]["contenidom"].value=document.getElementById('corrcont').innerText;
 
 },contoculto:function(aidi2){
   //funcion que muestra el contenido oculto del correo de la bandeja de salida
@@ -138,21 +111,34 @@ var LOGIN=LOGIN||
  var uuser = JSON.parse(localStorage.getItem("Online")).online;
  $('#nomuser').html(uuser);
 
-},editarcorreo:function(){
+},editarcorreo:function(bandeja, aidi){
   //funcion que permite editar correos en la bandeja de salida
   debugger;
-  var des = document.getElementById("des").value;
-  var asu = document.getElementById("as").value;
-  var con = document.getElementById("con").value;
-  document.getElementById("param").value ="des";
-  document.getElementById("asuntom").value ="as";
-  document.getElementById("contenidom").value ="con";
+  document.forms["modalform"]["para"].value=document.getElementById('corrpara').innerText;
+  document.forms["modalform"]["asunto"].value=document.getElementById('corrsun').innerText;
+  document.forms["modalform"]["contenido"].value=document.getElementById('corrcont').innerText;
+  if(bandeja=='salida'){
+    document.getElementById('save').style.display = 'none';
+    document.getElementById('save').removeAttribute("onclick");
+    document.getElementById('save').setAttribute("onclick","LOGIN.borradorguardado("+aidi+")");
+    document.getElementById('send').removeAttribute("onclick");
+    document.getElementById('send').setAttribute("onclick","LOGIN.enviadosguardado("+aidi+")");
+    $("#exampleModal").show();
+  }else{
+    document.getElementById('send').style.display = 'none';
+    document.getElementById('save').removeAttribute("onclick");
+    document.getElementById('save').setAttribute("onclick","LOGIN.borradorguardado("+aidi+")");
+    document.getElementById('send').removeAttribute("onclick");
+    document.getElementById('send').setAttribute("onclick","LOGIN.enviadosguardado("+aidi+")");
+    $("#exampleModal").show();
+  }
+
 },seleccionado:function(){
   //funcion para que el usuario note cual bandeja tiene seleccionada (bandeja de enviados)
   debugger;
   if(cambio===true){
     $("#salida").removeClass("seleccionado");
-    $("#enviados").addClass("seleccionado");
+    $("#borrador").addClass("seleccionado");
     cambio=false;
   }
 },seleccionado2:function(){
@@ -160,10 +146,18 @@ var LOGIN=LOGIN||
   debugger;
   if(cambio===false){
     $("#salida").addClass("seleccionado");
+    $("#borrador").removeClass("seleccionado");
+    cambio=true;
+  }
+},seleccionado3:function(){
+  //funcion para que el usuario note cual bandeja tiene seleccionada (bandeja de salida)
+  debugger;
+  if(cambio===false){
+    $("#salida").addClass("seleccionado");
     $("#enviados").removeClass("seleccionado");
     cambio=true;
   }
-},borradorguardado:function(){
+},borradorguardado:function(aidi){
   //funcion para guardar los correos de la bandeja de enviados
  debugger;
  var destinatario = document.getElementById("paramsj").value;
@@ -173,13 +167,12 @@ var LOGIN=LOGIN||
  var borrador = "borrador";
  if(LOGIN.validarlightbox()){
     var actual=window.location.href;
-    window.open('borrador/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido+'/'+borrador);
+    window.open('borrador/'+useron+'/'+destinatario+'/'+asunto+'/'+contenido+'/'+borrador+'/'+aidi);
     window.close(actual);
   }
   document.getElementById("paramsj").value ="";
   document.getElementById("asuntomsj").value ="";
   document.getElementById("contenidomsj").value ="";
-
 }
 
-};
+}

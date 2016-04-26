@@ -48,10 +48,10 @@ Route::post('loguear', 'UsersController@Login');
 
 Route::post('activar', 'UsersController@activaruser');
 
-Route::get('correoprincipal/{usuario}/{para}/{asunto}/{contenido}/{bandeja}', 'UsersController@nuevocorreo');
+Route::get('correoprincipal/{usuario}/{para}/{asunto}/{contenido}/{bandeja}/{id}', 'UsersController@nuevocorreo');
 
 Route::get('correoprincipal', function(){
-	return view('correoprincipal', ['correos' => '']);});
+	return view('correoprincipal', ['correos' => '', 'tipo' => '']);});
 
 Route::get('principal', 'UsersController@cargarcorreossalida');
 
@@ -59,7 +59,7 @@ Route::get('borrador', 'UsersController@cargarcorreosborrador');
 
 Route::get('enviados', 'UsersController@cargarcorreosenviado');
 
-Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}/{bandeja}', 'UsersController@nuevoguardado');
+Route::get('borrador/{usuario}/{destinatario}/{asunto}/{contenido}/{bandeja}/{id}', 'UsersController@nuevoguardado');
 
 Route::any('correoprincipal/{id}/{bandeja}', 'UsersController@eliminarcorreo');
 

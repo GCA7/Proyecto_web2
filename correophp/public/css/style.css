@@ -113,7 +113,20 @@ h3 {
     max-width: 800px;
     padding: 1.5em;
 }
-
+h4{
+     background-color: #02223a;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 2em;
+    opacity: 0.76;
+    text-align: center;
+    text-shadow: 1px 1px 1px #666;
+    text-transform: uppercase;
+    width: 100%;
+}
 
 .register{
     margin-top: -80px;

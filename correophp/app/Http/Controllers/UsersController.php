@@ -70,10 +70,8 @@ class UsersController extends Controller
     }else{
       if ($contraseña == $request->input("log_pass") && $user->email == $request->input("log_email") ){
         Cache::add('usuario',$request->input("log_email"),60);
-        echo "funcko";
         return redirect('/correoprincipal');
     }else{
-        echo "string";
         return view('loguear', ['error' => 'Usuario o contraseña incorrecta']);
     }
 }
@@ -86,43 +84,57 @@ public function activaruser(Request $request)
     return redirect('/loguear'); 
 }
 
-public function nuevocorreo($usuario, $para, $asunto, $contenido, $bandeja)
+public function nuevocorreo($usuario, $para, $asunto, $contenido, $bandeja, $id)
 {
-    $salidas = new Salida;
-    $salidas->email= $usuario;
-    $salidas->destinatario = $para;
-    $salidas->asunto = $asunto;
-    $salidas->contenido = $contenido;
-    $salidas->estado = true;
-    $salidas->bandeja = $bandeja;
-    $salidas->save();
+    if($id==='undefined'){
+    $salida = new Salida;
+    $salida->email= $usuario;
+    $salida->destinatario = $para;
+    $salida->asunto = $asunto;
+    $salida->contenido = $contenido;
+    $salida->estado = true;
+    $salida->bandeja = $bandeja;
+    $salida->save();
+    }else{
+    DB::table('salidas')
+            ->where('id', $id)
+            ->update(['destinatario' => $para,'asunto'=> $asunto,'contenido'=>$contenido]);
+    }
     return redirect('correoprincipal'); 
 }
 
 public function cargarcorreossalida() {
     $user = Cache::get('usuario');
     $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
-    return view('correoprincipal', ['correos' => $correos]);
+    return view('correoprincipal', ['correos' => $correos, 'tipo' => 'LOGIN.cargasalida']);
 }
 
-public function nuevoguardado($usuario, $destinatario, $asunto, $contenido, $bandeja)
+public function nuevoguardado($usuario, $destinatario, $asunto, $contenido, $bandeja, $id)
 {
-    $salidas = new Borrador;
-    $salidas->email= $usuario;
-    $salidas->destinatario = $destinatario;
-    $salidas->asunto = $asunto;
-    $salidas->contenido = $contenido;
-    $salidas->estado = false;
-    $salidas->bandeja = $bandeja;
-    $salidas->save();
-    return redirect('correoprincipal'); 
+    if($id==='undefined'){
+    $borrador = new Borrador;
+    $borrador->email= $usuario;
+    $borrador->destinatario = $destinatario;
+    $borrador->asunto = $asunto;
+    $borrador->contenido = $contenido;
+    $borrador->estado = false;
+    $borrador->bandeja = $bandeja;
+    $borrador->save();
+    }else{
+        DB::table('borradores')
+            ->where('id', $id)
+            ->update(['destinatario' => $destinatario,'asunto'=> $asunto,'contenido'=>$contenido]);
+
+    } 
+
+    return redirect('correoprincipal');
 }
 
 public function cargarcorreosborrador() 
 {
     $user = Cache::get('usuario');
     $correos= DB::table('borradores')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
-    return view('correoprincipal', ['correos' => $correos]);
+    return view('correoprincipal', ['correos' => $correos, 'tipo' => 'LOGIN.cargaborrador']);
 }
 
 public function nuevoenviado($usuario, $destinatario, $asunto, $contenido)
@@ -173,8 +185,9 @@ public function enviarcorreos($correos){
 public function cargarcorreosenviado() {
     $user = Cache::get('usuario');
     $correos= DB::table('enviados')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
-    return view('correoprincipal', ['correos' => $correos]);
+    return view('correoprincipal', ['correos' => $correos, 'tipo' => 'LOGIN.cargaenviado']);
 }
+
 
 }
 

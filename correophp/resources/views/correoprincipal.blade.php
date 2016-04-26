@@ -4,7 +4,7 @@
 	<header class="color h sombra">
 		<nav>
 			<img class="im verticalLine"src="../img/email-icon.png">
-			<button class="boton b3" type="button" onClick="{{asset('login')}}">Cerrar Sesion </button>
+			<button class="boton b3" type="button" href='login'>Cerrar Sesion </button>
 			<img class="im dere2" id="imgavatar" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com" src="../img/Avatar.png">
 			<p class="der2 visible-desktop visible-tablet" id="nomuser"></p>
 			<p class="pe visible-desktop visible-tablet">Letter</p>
@@ -17,7 +17,7 @@
 				<button type="button" title="Crear correo nuevo" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 				<hr>
 				<ul >
-					<li id="salida"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" href='borrador'>Borrador</a><span class="badge left" id="icorreos"></span></li>
+					<li id="borrador"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" href='borrador' onClick="LOGIN.seleccionado();">Borrador</a><span class="badge left" id="icorreos"></span></li>
 					<li id="salida"class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox icon"></span><a class="a left" selected="selected" href='principal'>Salida</a><span class="badge left" id="icorreos"></span></li>
 					<li id="enviados" class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-send icon"></span><a class="a left" href='enviados'>Enviados </a><span class="badge left" id="ienviados"></span></li>
 				</ul>
@@ -26,23 +26,22 @@
 		<nav class="floatright">
 			<p id="fecha" class="hoy salto visible-desktop visible-tablet">Hoy</p>
 			<hr class="visible-desktop visible-tablet">
-			<div onclick="LOGIN.editarcorreo();">
+			<div>
 				<div  id="correos_borrados">
 					<div >
 						<?php if (is_array ($correos)) {
 							foreach($correos as $correos) { ?>
 							<div>
 								<div class='nave panel panel-default imagenConPieDeTexto sombra'>
-								<div onClick='LOGIN.contoculto("+i+");'data-toggle="modal" data-toggle="modal" data-target="#myModal" >
+								<div onClick="LOGIN.mostrarcontenido(<?php echo $correos->id?>);" data-toggle="modal" data-toggle="modal" data-target="#myModal" name="contenidos">
 									<span class= 'glyphicon glyphicon-envelope img-tam2'></span>
-									<span id='corrasun' class='text' style='color:black' ><?php echo( $correos->asunto ); ?>&nbsp;</span>
-									<span id='corrcont' class='text' style='color:gray' maxlength='10'><?php echo( $correos->contenido ); ?></span>
+									<span id="corrsun" name="corrsun" class='text' style='color:black' ><?php echo( $correos->asunto ); ?>&nbsp;</span>
+									<span id="corrcont" class='text' style='color:gray' maxlength='10'><?php echo( $correos->contenido ); ?></span>
+									<span id="corrpara" class='text' style='color:gray' maxlength='10'><?php echo( $correos->destinatario); ?></span>
 									</div>
 									<a title='Eliminar correo' id='trash' class='glyphicon glyphicon-trash img-tam' style='float:right' href="correoprincipal\<?php echo( $correos->id);?>\<?php echo( $correos->bandeja);?>"></a>
-									<a title='Editar correo' id='edit' class='glyphicon glyphicon-pencil img-tam' style='float:right' href="correoprincipal\<?php echo( $correos->id);?>\<?php echo( $correos->bandeja);?>"></a>
+									<a title='Editar correo' id='edit' class='glyphicon glyphicon-pencil img-tam' style='float:right' onclick="LOGIN.editarcorreo('<?php echo( $correos->bandeja);?>','<?php echo( $correos->id);?>')"></a>
 									</div>
-								<nav>
-								</nav>
 								</div>
 										<?php }} ?>
 									</div>
@@ -73,8 +72,8 @@
 												<textarea class="form-control" id="contenidomsj" name="contenido" placeholder="Message:"></textarea>
 											</div>
 											<div class="modal-footer">
-												<button type="submit" class="btn btn-default" onClick="LOGIN.borradorguardado();">Save</button>
-												<button type="submit" class="btn btn-primary" onClick="LOGIN.enviadosguardado();">Send</button>
+												<button type="submit" class="btn btn-default" name="btnsend" id="save" onClick="LOGIN.borradorguardado();">Save</button>
+												<button type="submit" class="btn btn-primary" id="send" onClick="LOGIN.enviadosguardado();">Send</button>
 											</div>
 										</div>
 									</div>
@@ -82,7 +81,8 @@
 							</div>
 						</form>
 						<!-- Modal -->
-						<div class="modal fade animated fadeInUp arr" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<form name="cargar">
+						<div class="modal fade animated fadeInUp arr" id="myModal" name="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -106,6 +106,7 @@
 								</div>
 							</div>
 						</div>
+					</form>	
 					</section>
 				</div>
 				@stop

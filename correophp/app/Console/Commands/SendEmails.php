@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 use App\Salida;
 use App\Enviado;
+use App\Borrador;
 use DB;
 use Illuminate\Console\Command;
 use Cache;

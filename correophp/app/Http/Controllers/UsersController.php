@@ -20,7 +20,7 @@ class UsersController extends Controller
     {
         return view('register');
     }
-
+    #funcion para insertar nuevos usuarios
     public function insertar(UserRequest $request)
     {
         #if($this->validacion($request->input('email'))){
@@ -33,7 +33,7 @@ class UsersController extends Controller
         return redirect('login'); 
         #}  
     }
-
+    #funcion que valida que sea un usuario correcto
     public function validacion($mail)
     {
         $results = DB::table('users')->get();
@@ -45,10 +45,9 @@ class UsersController extends Controller
             }else{
                 return true;
             }
-            
         }
     }
-
+    #funcion que envia correos de confirmacion de registro
     public function email($correo)
     {
      $data=[];
@@ -60,7 +59,7 @@ class UsersController extends Controller
 });
         #Mail($correo,'funke','correo','greivindca7@gmail.com');
  }
-
+    #funcion para loguear usuario, y validar que lo pueda hacer
  public function Login(Request $request){
     $user= DB::table('users')->select('password', 'email', 'estado')->where('email',$request->input("log_email"))->get();
     foreach ($user as $user) {
@@ -69,7 +68,7 @@ class UsersController extends Controller
         return view('loguear', ['error' => 'No has activado tu cuenta, favor revisa tu correo']);
     }else{
       if ($contraseña == $request->input("log_pass") && $user->email == $request->input("log_email") ){
-        Cache::add('usuario',$request->input("log_email"),120);
+        Cache::add('usuario',$request->input("log_email"),60);
         return redirect('/correoprincipal');
     }else{
         return view('loguear', ['error' => 'Usuario o contraseña incorrecta']);
@@ -77,13 +76,13 @@ class UsersController extends Controller
 }
 }
 }
-
+#funcion para activar la cuenta del usuario
 public function activaruser(Request $request)
 { 
     DB::table('users')->where('email', $request->input('email'))->update(['estado' => 1]);
     return redirect('/loguear'); 
 }
-
+#funcion para insertar un nuevo correo en la bandeja de salida
 public function nuevocorreo($usuario, $para, $asunto, $contenido, $bandeja, $id)
 {
     if($id==='undefined'){
@@ -102,13 +101,13 @@ public function nuevocorreo($usuario, $para, $asunto, $contenido, $bandeja, $id)
     }
     return redirect('correoprincipal'); 
 }
-
+    #funcion para cargar los correos que se encuentran en la bajdena de salida
 public function cargarcorreossalida() {
     $user = Cache::get('usuario');
     $correos= DB::table('salidas')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
     return view('correoprincipal', ['correos' => $correos, 'tipo' => 'LOGIN.cargasalida']);
 }
-
+    #funcion para insertar un correo en borrador
 public function nuevoguardado($usuario, $destinatario, $asunto, $contenido, $bandeja, $id)
 {
     if($id==='undefined'){
@@ -126,17 +125,16 @@ public function nuevoguardado($usuario, $destinatario, $asunto, $contenido, $ban
             ->update(['destinatario' => $destinatario,'asunto'=> $asunto,'contenido'=>$contenido]);
 
     } 
-
     return redirect('correoprincipal');
 }
-
+    #funcion para cargar los correos que se encuentrar en borrador
 public function cargarcorreosborrador() 
 {
     $user = Cache::get('usuario');
     $correos= DB::table('borradores')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();
     return view('correoprincipal', ['correos' => $correos, 'tipo' => 'LOGIN.cargaborrador']);
 }
-
+    #funcion para insertar correos en la bandeja de enviados
 public function nuevoenviado($usuario, $destinatario, $asunto, $contenido)
 {
     $salidas = new Enviado;
@@ -148,22 +146,22 @@ public function nuevoenviado($usuario, $destinatario, $asunto, $contenido)
     $salidas->save();
     return redirect('correoprincipal'); 
 }
-
+    #funcion que permite eliminar correos
 public function eliminarcorreo($id, $bandeja)
 {
     $user = Cache::get('usuario');
     if($bandeja=='salida'){
     $correos= DB::table('salidas')->where('id', '=',$id)->delete();
-    return redirect('correoprincipal');
+    return redirect('principal');
     }else if($bandeja=='borrador'){
     $correos= DB::table('borradores')->where('id', '=',$id)->delete();
-    return redirect('correoprincipal');
+    return redirect('borrador');
     } else if($bandeja=='enviado'){
     $correos= DB::table('enviados')->where('id', '=',$id)->delete();
-    return redirect('correoprincipal');
+    return redirect('enviados');
     }
 }
-
+    #funcion que permite editar correos
 public function editarcorreos($id, $destinatario, $asunto, $contenido)
 {
     $user = Cache::get('usuario');
@@ -171,7 +169,7 @@ public function editarcorreos($id, $destinatario, $asunto, $contenido)
             ->where('id', $id)
             ->update(['destinatario' => $para,'asunto'=> $asunto,'contenido'=>$contenido]);
 }
-
+#funcion para enviar correos
 public function enviarcorreos($correos){
  $data=[];
    Mail::send('confirmacion', $data, function ($message) use ($correos){
@@ -181,7 +179,7 @@ public function enviarcorreos($correos){
     $message->to($correos->email);
 });
 }
-
+#funcion para cargar correos que estan en la bandeja de enviados
 public function cargarcorreosenviado() {
     $user = Cache::get('usuario');
     $correos= DB::table('enviados')->select('id', 'email', 'asunto', 'destinatario', 'contenido', 'bandeja')->where('email', $user)->get();

@@ -35,7 +35,7 @@
         </div>
     </br>
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Email" id="email" name="email" aria-describedby="basic-addon2" required>
+        <input type="text" class="form-control" placeholder="Email" id="email" name="email" aria-describedby="basic-addon2" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
         <span class="input-group-addon" id="basic-addon2"></span>
     </div>
 </br>

@@ -4,7 +4,7 @@
 	<header class="color h sombra">
 		<nav>
 			<img class="im verticalLine"src="../img/email-icon.png">
-			<button class="boton b3" type="button" href='login'>Cerrar Sesion </button>
+			<button class="boton b3" type="button" href='loguear'>Cerrar Sesion </button>
 			<img class="im dere2" id="imgavatar" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com" src="../img/Avatar.png">
 			<p class="der2 visible-desktop visible-tablet" id="nomuser"></p>
 			<p class="pe visible-desktop visible-tablet">Letter</p>
@@ -17,7 +17,7 @@
 				<button type="button" title="Crear correo nuevo" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 				<hr>
 				<ul >
-					<li id="borrador"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" href='borrador' onClick="LOGIN.seleccionado();">Borrador</a><span class="badge left" id="icorreos"></span></li>
+					<li id="borrador"class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-envelope icon"></span><a class="a left" selected="selected" href='borrador' >Borrador</a><span class="badge left" id="icorreos"></span></li>
 					<li id="salida"class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox icon"></span><a class="a left" selected="selected" href='principal'>Salida</a><span class="badge left" id="icorreos"></span></li>
 					<li id="enviados" class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-send icon"></span><a class="a left" href='enviados'>Enviados </a><span class="badge left" id="ienviados"></span></li>
 				</ul>
@@ -61,7 +61,7 @@
 										<div class="modal-body">
 											<div class="form-group">
 												<label for="recipient-name" class="control-label"></label>
-												<input type="text" class="form-control" id="paramsj" name="para" placeholder="Para:" multiple required>
+												<input type="text" class="form-control" id="paramsj" name="para" placeholder="Para:" multiple required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
 											</div>
 											<div class="form-group">
 												<label for="recipient-name" class="control-label"></label>
